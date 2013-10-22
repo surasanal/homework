@@ -1,0 +1,120 @@
+#include<stdio.h>
+#include<conio.h>
+#include<windows.h>
+
+void main()
+{
+	int hesap_no, hesap_bakiyesi=1000, islem, yatirilan_miktar, cekilecek_miktar, gonderilecek_miktar;
+	char cevap, kullanici_adi[20], sifre[4];
+	printf("Hosgeldiniz\n");
+	printf("Lutfen kullanici adini giriniz: \n");
+	scanf("%s",&kullanici_adi);
+	printf("Sifrenizi giriniz: \n");
+	scanf("%s",&sifre);
+	
+
+	
+
+	dongu1: // Programın menüye dönmesini sağlar.
+	printf("\n\n\n\tMENU\n");
+	printf("\t1)HESAP BAKIYESI\n");
+	printf("\t2)PARA YATIRMA\n");
+	printf("\t3)PARA CEKME\n");
+	printf("\t4)PARA GONDERME\n");
+	printf("\t5)CIKIS\n");
+	printf("Lutfen bir islem seciniz(1/2/3/4/5)");
+	scanf("%d",&islem);
+	
+	
+	 
+	
+	if(islem==1)
+	{
+		printf("\n\nHesap bakiyesi: %d TL\n",hesap_bakiyesi);
+		
+		dongu2:		//islem yapıldıktan sonra baska bir işlem yapmak için programı buraya döndürür.
+		Sleep(1000);	//ekranı bir süre bekletir.
+		printf("\n\nBaska bir islem yapmak istiyor musunuz?(e/h)\n");
+		cevap=getch();
+		switch(cevap)	//başka bir işlem yapılıp yapılmayacağını kontrol eder.
+		{
+		case 'e':
+			printf("Lutfen bekleyiniz.\n\n\n");
+			Sleep(2000);
+			goto dongu1;
+			break;
+		case 'h':
+			printf("Tesekkurler. Yine bekleriz.\n");
+			exit(0);
+		default:
+			printf("Yanlis bir tusa bastiniz.\n");
+			goto dongu2;
+		}
+
+	}
+	else if(islem==2)
+	{
+		printf("\n\nYatirmak istediginiz miktari giriniz: \n");
+		scanf("%d", &yatirilan_miktar);
+		hesap_bakiyesi=hesap_bakiyesi+yatirilan_miktar;
+		printf("Paraniz hesabiniza yatmistir.\n");
+		printf("Yeni hesap bakiyeniz: %d TL\n",hesap_bakiyesi);
+		goto dongu2;  
+
+	}
+	else if(islem==3)
+	{
+		printf("\n\nCekmek istediginiz miktari giriniz: \n");
+		scanf("%d",&cekilecek_miktar);
+		if(cekilecek_miktar>hesap_bakiyesi)
+		{
+			printf("Hesabinizda yeterli miktarda para bulunmamaktadir.\n");
+			goto dongu2;
+		}
+		else
+		{
+			hesap_bakiyesi=hesap_bakiyesi-cekilecek_miktar;
+			printf("Hesabinizdan %d TL para cekilmistir.\n", cekilecek_miktar);
+			printf("Yeni hesap bakiyeniz: %d TL\n", hesap_bakiyesi);
+			goto dongu2;
+
+		}
+	}
+	else if(islem==4)
+	{
+		printf("\n\nGondereceginiz hesap numarisini giriniz: \n");
+		scanf("%d", &hesap_no);
+		printf("Gondermek istediginiz miktari giriniz: \n");
+		scanf("%d", &gonderilecek_miktar);
+		if(gonderilecek_miktar>hesap_bakiyesi)
+		{
+			printf("Hesabinizda yeterli miktarda para bulunmamaktadir.\n");
+			goto dongu2;
+		}
+		else
+		{
+			hesap_bakiyesi=hesap_bakiyesi-gonderilecek_miktar;
+			printf("Hesabinizdan %d hesap numarasina %d TL gonderilmistir.\n",hesap_no, gonderilecek_miktar);
+			printf("Yeni hesap bakiyeniz: %d TL\n", hesap_bakiyesi);
+			goto dongu2;
+		}
+	}
+	else if(islem==5)
+	{
+		{
+			printf("Cikis yapiliyor..Lutfen bekleyiniz..");
+			Sleep(2000);
+			printf("Tesekkurler. Yine bekleriz.\n");
+		}
+		exit(0);	//programın sonlanmasını sağlar.
+	}
+
+	
+	else
+	{
+
+		printf("Yanlis bir islem sectiniz.\nLutfen baska bir islem seciniz.\n\n");
+		goto dongu1;
+	}
+
+	}
