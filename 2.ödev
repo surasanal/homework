@@ -1,0 +1,49 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	int sayi, binlik=0, yuzluk=0, onluk=0, birlik=0;
+	for(;;)	//programın sonsuz döngüye girmesini sağlar.
+	{
+		printf("Dort basamakli bir sayi giriniz.\n");
+		scanf("%d",&sayi);
+
+	if(sayi>999 && sayi<10000)
+	{
+
+	while(sayi>=1000) //sayının 1000den buyuk olup olmadığını kontrol eder.
+	{
+		binlik++;	//eğer yukarıdaki kosul doğruysa binliği 1 artırır.
+		sayi=sayi-1000;	//sayidan bin çıkarıp while döngüsüne geri döner.
+	}
+	printf("%d binlik vardir.\n",binlik);
+	
+	while(sayi>=100)	//yukarıdaki kosul bitince bu while döngüsünün dogruluğunu kontrol eder.	
+	{
+		yuzluk++;
+		sayi=sayi-100;
+	}
+	printf("%d yuzluk vardir.\n",yuzluk);
+
+	while(sayi>=10)
+	{
+		onluk++;
+		sayi=sayi-10;
+	}
+	printf("%d onluk vardir.\n",onluk);
+
+	while(sayi>=1)
+	{
+		birlik++;
+		sayi=sayi-1;
+	}
+	printf("%d birlik vardir.\n",birlik);
+	break;  //programdan çıkar.
+	}
+		
+	else //eğer dört basamaklı bir sayı girilmediyse for döngüsüne döner.
+	{
+		printf("Yanlis bir sayi girdiniz..\n\n");
+	}
+}
+}
